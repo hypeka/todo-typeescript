@@ -7,10 +7,11 @@ interface Props {}
 export const CreateTodo = (props: Props) => {
   const navigate = useNavigate();
 
-  const [topic, setTopic] = useState("");
-  const [about, setAbout] = useState("");
+  const [topic, setTopic] = useState<string>("");
+  const [about, setAbout] = useState<string>("");
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [value, onChange] = useState(new Date());
+
 
   return (
     <>
@@ -45,10 +46,7 @@ export const CreateTodo = (props: Props) => {
           <div className="create-input">
             <label htmlFor="">Must Complete On : </label>
             <br />
-            <DatePicker
-              selected={startDate}
-              // onChange={(date: Date) => setStartDate(date)}
-            />
+            <DatePicker onChange={onChange} value={value} />
           </div>
           <div className="create-btn">
             {/* <button onClick={(e) => createTodoHandler(e)}>Create TODO</button> */}
